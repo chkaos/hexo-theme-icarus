@@ -4,7 +4,7 @@ const { cacheComponent } = require('hexo-component-inferno/lib/util/cache');
 class AnimeJs extends Component {
     render() {
         if (this.props.head) {
-            return <style dangerouslySetInnerHTML={{ __html: 'body>.footer,body>.navbar,body>.section{opacity:0}' }}></style>;
+            return <style dangerouslySetInnerHTML={{ __html: 'body>.footer,body>.navbar,body>.section{opacity:1}' }}></style>;
         }
         return <script src={this.props.jsUrl}></script>;
 
