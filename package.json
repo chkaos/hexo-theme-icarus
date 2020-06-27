@@ -13,6 +13,7 @@
     "lint": "eslint --ext .js --ext .jsx --ext .json ."
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.2.0",
     "eslint": "^6.8.0",
     "eslint-config-hexo": "^4.1.0",
     "eslint-plugin-json": "^2.0.1",
@@ -32,5 +33,10 @@
     "inferno-create-element": "^7.3.3",
     "moment": "^2.22.2",
     "semver": ">=5.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }

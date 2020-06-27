@@ -5,7 +5,7 @@ module.exports = class extends Component {
     render() {
         const { site, config, helper, page } = this.props;
         const { url_for, cdn } = helper;
-        const { external_link, article } = config;
+        const { external_link, article,  url, plugins } = config;
         const language = page.lang || page.language || config.language || 'en';
 
         let externalLink;
@@ -31,7 +31,7 @@ module.exports = class extends Component {
 
         const embeddedConfig = `var IcarusThemeSettings = {
             site: {
-                url: '${config.url}',
+                url: '${url}',
                 external_link: ${JSON.stringify(externalLink)}
             },
             article: {
@@ -43,13 +43,17 @@ module.exports = class extends Component {
         };`;
 
         return <Fragment>
+            <script src={url_for('/js/utils.js')}></script>
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
             <script src={cdn('moment', '2.22.2', 'min/moment-with-locales.min.js')}></script>
             <script dangerouslySetInnerHTML={{ __html: `moment.locale("${language}");` }}></script>
             <script dangerouslySetInnerHTML={{ __html: embeddedConfig }}></script>
             {clipboard ? <script src={cdn('clipboard', '2.0.4', 'dist/clipboard.min.js')} defer={true}></script> : null}
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
+            <script src={url_for('/js/toc.js')} defer={true}></script>
+            <script type="text/javascript" src={url_for('/js/theme.js')}></script>
             <script src={url_for('/js/main.js')} defer={true}></script>
+            <script src={url_for('/js/music.js')} defer={true}></script>
         </Fragment>;
     }
 };

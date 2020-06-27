@@ -11,10 +11,9 @@
         },
         "variant": {
             "type": "string",
-            "description": "Icarus theme variant, can be \"default\" or \"cyberpunk\"",
+            "description": "Icarus theme variant, can be \"default\"",
             "enum": [
-                "default",
-                "cyberpunk"
+                "default"
             ],
             "default": "default"
         },

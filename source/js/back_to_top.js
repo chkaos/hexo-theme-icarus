@@ -1,4 +1,6 @@
-$(document).ready(() => {
+$(document).ready(loadBackTop());
+
+function loadBackTop() {
     const $button = $('#back-to-top');
     const $footer = $('footer.footer');
     const $mainColumn = $('.column-main');
@@ -13,7 +15,8 @@ $(document).ready(() => {
             classname: 'card has-text-centered',
             left: '',
             width: 64,
-            bottom: bottomMargin
+            bottom: bottomMargin,
+            'border-radius': 4
         }
     };
     state['desktop-hidden'] = Object.assign({}, state.base, {
@@ -23,8 +26,9 @@ $(document).ready(() => {
         classname: state['desktop-hidden'].classname + ' fade-in'
     });
     state['desktop-dock'] = Object.assign({}, state['desktop-visible'], {
-        classname: state['desktop-visible'].classname + ' fade-in is-rounded',
-        width: 40
+        classname: state['desktop-visible'].classname + ' fade-in',
+        width: 40,
+        'border-radius': '50%'
     });
     state['mobile-hidden'] = Object.assign({}, state.base, {
         classname: state.base.classname + ' fade-in',
@@ -57,7 +61,7 @@ $(document).ready(() => {
     }
 
     function isDesktop() {
-        return window.innerWidth >= 1078;
+        return window.innerWidth >= 1024;
     }
 
     function isTablet() {
@@ -80,7 +84,7 @@ $(document).ready(() => {
         if (!hasRightSidebar()) {
             return 0;
         }
-        return Math.max.apply(null, $rightSidebar.find('.widget').map(function() {
+        return Math.max.apply(null, $rightSidebar.find('.widget').map(function () {
             return $(this).offset().top + $(this).outerHeight(true);
         }));
     }
@@ -110,7 +114,7 @@ $(document).ready(() => {
         if (isDesktop() || (isTablet() && !hasLeftSidebar() && hasRightSidebar())) {
             let nextState;
             const padding = ($mainColumn.outerWidth() - $mainColumn.width()) / 2;
-            const maxLeft = $(window).width() - getButtonWidth() - rightMargin;
+            // const maxLeft = $(window).width() - getButtonWidth() - rightMargin;
             const maxBottom = $footer.offset().top + (getButtonHeight() / 2) + bottomMargin;
             if (getScrollTop() === 0 || getScrollBottom() < getRightSidebarBottom() + padding + getButtonHeight()) {
                 nextState = state['desktop-hidden'];
@@ -122,10 +126,10 @@ $(document).ready(() => {
                 });
             }
 
-            const left = $mainColumn.offset().left + $mainColumn.outerWidth() + padding;
-            nextState = Object.assign({}, nextState, {
-                left: Math.min(left, maxLeft)
-            });
+            // const left = $mainColumn.offset().left + $mainColumn.outerWidth() + padding;
+            // nextState = Object.assign({}, nextState, {
+            //     left: Math.min(left, maxLeft)
+            // });
             applyState(nextState);
         } else {
             // mobile and tablet mode
@@ -145,4 +149,4 @@ $(document).ready(() => {
     $('#back-to-top').on('click', () => {
         $('body, html').animate({ scrollTop: 0 }, 400);
     });
-});
+}

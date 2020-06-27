@@ -12,6 +12,12 @@
         max-width: $widescreen - 2 * $gap
         width: $widescreen - 2 * $gap
 
++desktop()
+    // overwrite navbar collasge
+    .navbar > .container {
+        display: flex !important; 
+    }
+
 +tablet()
     .is-sticky
         position: -webkit-sticky
@@ -27,3 +33,5 @@
 +mobile()
     .section
         padding: 1.5rem 1rem
+
+// overwrite

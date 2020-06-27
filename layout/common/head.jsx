@@ -51,7 +51,6 @@ module.exports = class extends Component {
         const language = page.lang || page.language || config.language;
         const fontCssUrl = {
             default: fontcdn('Ubuntu:wght@400;600&family=Source+Code+Pro', 'css2'),
-            cyberpunk: fontcdn('Oxanium:wght@300;400;600&family=Roboto+Mono', 'css2')
         };
 
         let hlTheme, images;
@@ -148,7 +147,10 @@ module.exports = class extends Component {
             <link rel="stylesheet" href={fontCssUrl[variant]} />
             <link rel="stylesheet" href={url_for('/css/' + variant + '.css')} />
             <Plugins site={site} config={config} helper={helper} page={page} head={true} />
-
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css" />
+            <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
+            {/* <!-- require MetingJS --> */}
+            <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
             {adsenseClientId ? <script data-ad-client={adsenseClientId}
                 src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js" async={true}></script> : null}
         </head>;

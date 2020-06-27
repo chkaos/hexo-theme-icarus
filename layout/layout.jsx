@@ -2,6 +2,7 @@ const { Component } = require('inferno');
 const classname = require('hexo-component-inferno/lib/util/classname');
 const Head = require('./common/head');
 const Navbar = require('./common/navbar');
+const Music = require('./common/music');
 const Widgets = require('./common/widgets');
 const Footer = require('./common/footer');
 const Scripts = require('./common/scripts');
@@ -34,6 +35,7 @@ module.exports = class extends Component {
                         </div>
                     </div>
                 </section>
+                <Music></Music>
                 <Footer config={config} helper={helper} />
                 <Scripts site={site} config={config} helper={helper} page={page} />
                 <Search config={config} helper={helper} />

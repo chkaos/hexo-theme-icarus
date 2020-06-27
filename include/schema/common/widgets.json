@@ -17,6 +17,9 @@
                 "$ref": "/widget/profile.json"
             },
             {
+                "$ref": "/widget/left_nav.json"
+            },
+            {
                 "$ref": "/widget/toc.json"
             },
             {
