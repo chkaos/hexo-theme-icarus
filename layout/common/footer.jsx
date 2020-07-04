@@ -44,18 +44,6 @@ class Footer extends Component {
                 ></span>
               </p>
             ) : null}
-            {/* <div class="level-end">
-                        {Object.keys(links).length ? <div class="field has-addons">
-                            {Object.keys(links).map(name => {
-                                const link = links[name];
-                                return <p class="control">
-                                    <a class={`button is-transparent ${link.icon ? 'is-large' : ''}`} target="_blank" rel="noopener" title={name} href={link.url}>
-                                        {link.icon ? <i class={link.icon}></i> : name}
-                                    </a>
-                                </p>;
-                            })}
-                        </div> : null}
-                    </div> */}
           </div>
         </div>
       </footer>

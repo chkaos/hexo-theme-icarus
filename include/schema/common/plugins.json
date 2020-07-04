@@ -4,9 +4,6 @@
     "description": "Plugin configurations\nhttps://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/",
     "type": "object",
     "properties": {
-        "animejs": {
-            "$ref": "/plugin/animejs.json"
-        },
         "back_to_top": {
             "$ref": "/plugin/back_to_top.json"
         },

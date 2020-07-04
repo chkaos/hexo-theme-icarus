@@ -97,10 +97,6 @@ function loadBackTop() {
         return $(window).scrollTop() + $(window).height();
     }
 
-    function getButtonWidth() {
-        return $button.outerWidth(true);
-    }
-
     function getButtonHeight() {
         return $button.outerHeight(true);
     }
@@ -113,8 +109,8 @@ function loadBackTop() {
         // desktop mode or tablet mode with only right sidebar enabled
         if (isDesktop() || (isTablet() && !hasLeftSidebar() && hasRightSidebar())) {
             let nextState;
+
             const padding = ($mainColumn.outerWidth() - $mainColumn.width()) / 2;
-            // const maxLeft = $(window).width() - getButtonWidth() - rightMargin;
             const maxBottom = $footer.offset().top + (getButtonHeight() / 2) + bottomMargin;
             if (getScrollTop() === 0 || getScrollBottom() < getRightSidebarBottom() + padding + getButtonHeight()) {
                 nextState = state['desktop-hidden'];
@@ -125,11 +121,10 @@ function loadBackTop() {
                     bottom: getScrollBottom() - maxBottom + bottomMargin
                 });
             }
-
-            // const left = $mainColumn.offset().left + $mainColumn.outerWidth() + padding;
-            // nextState = Object.assign({}, nextState, {
-            //     left: Math.min(left, maxLeft)
-            // });
+            
+            delete nextState["left"]
+            nextState.right = "20px"
+            
             applyState(nextState);
         } else {
             // mobile and tablet mode

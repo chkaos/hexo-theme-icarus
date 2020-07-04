@@ -52,6 +52,7 @@ module.exports = class extends Component {
             <Plugins site={site} config={config} page={page} helper={helper} head={false} />
             <script src={url_for('/js/toc.js')} defer={true}></script>
             <script type="text/javascript" src={url_for('/js/theme.js')}></script>
+            <script type="text/javascript" src={url_for('/js/egg.js')}></script>
             <script src={url_for('/js/main.js')} defer={true}></script>
             <script src={url_for('/js/music.js')} defer={true}></script>
         </Fragment>;
