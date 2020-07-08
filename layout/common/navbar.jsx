@@ -30,19 +30,21 @@ class Navbar extends Component {
       tocTitle,
       showSearch,
       searchTitle,
+      logoText
     } = this.props;
 
     return (
-      <nav class="navbar navbar-main">
+      <nav id="navbar" class="navbar navbar-main">
         <div class="container">
           <div class="navbar-brand justify-content-center">
-            <a class="navbar-item navbar-logo" href={siteUrl}>
+            <a class="navbar-logo" href={siteUrl}>
               {logo && logo.text ? (
                 logo.text
               ) : (
-                <img src={logoUrl} alt={siteTitle} height="28" />
+                <img src={logoUrl} alt={siteTitle} height="32" />
               )}
             </a>
+            <div class="navbar-item navbar-text">{logoText}</div>
             <div class="navbar-item">{siteTitle}</div>
           </div>
           <div class="navbar-menu">
@@ -120,7 +122,7 @@ class Navbar extends Component {
 module.exports = cacheComponent(Navbar, "common.navbar", (props) => {
   const { config, helper, page } = props;
   const { url_for, _p, __ } = helper;
-  const { logo, subtitle, navbar, widgets, search } = config;
+  const { author, logo, subtitle, navbar, widgets, search } = config;
 
   const hasTocWidget =
     Array.isArray(widgets) && widgets.find((widget) => widget.type === "toc");
@@ -152,6 +154,7 @@ module.exports = cacheComponent(Navbar, "common.navbar", (props) => {
 
   return {
     logo,
+    logoText : author.toUpperCase(),
     logoUrl: url_for(logo),
     siteUrl: url_for("/"),
     siteTitle: subtitle,

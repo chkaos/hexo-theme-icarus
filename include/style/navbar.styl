@@ -1,15 +1,25 @@
 /* ---------------------------------
  *           Top Navigation
  * --------------------------------- */
-$navbar-item-padding-v ?= 1.25rem
+$navbar-item-padding-v ?= 1.5rem
 $navbar-item-padding-h ?= .75rem
 $navbar-item-margin-v ?= 0
 $navbar-item-margin-h ?= 0
 
 .navbar-main
     box-shadow: $shadow
-    position: sticky
+    position: fixed
     top: 0
+    width: 100%
+    height: $navbar-height
+
+    &.visible
+        transition: all .5s
+        transform: translate3d(0, 100%, 0)
+
+    &.fixed
+       top: -60px
+       transition: transform .2s ease-in-out
 
     .navbar-menu, .navbar-start, .navbar-end
         align-items: stretch
@@ -51,9 +61,19 @@ $navbar-item-margin-h ?= 0
         .navbar-end
             margin-left: 0
 
-.navbar-logo
-    img
-        max-height: $logo-height
+    .navbar-logo
+        display: flex
+        align-items: center
+        img
+            max-height: 3rem
+
+    .navbar-text
+        // font-weight: 300
+        font-family: "Comfortaa"
+        padding: 0
+        font-size: 1.5rem
+        color: $primary
+
 
 a.navbar-item:focus,
 .navbar-link:focus,
@@ -65,3 +85,4 @@ a.navbar-item.is-active,
 .navbar-link.is-active {
     background-color: unset;
 }
+

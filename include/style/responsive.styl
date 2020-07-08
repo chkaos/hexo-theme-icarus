@@ -5,6 +5,11 @@
     .is-3-column .container, .is-1-column .container, .is-2-column .container
         max-width: $desktop - 2 * $gap
         width: $desktop - 2 * $gap
+    .column-main 
+        min-width: 55%
+
+    .column-left
+        max-width: 20%
 
 +fullhd()
 
@@ -33,10 +38,8 @@
 +mobile()
     .section
         padding: 1.5rem 1rem
+    .aplayer 
+        display: none
 
 // overwrite
-.column-main 
-    min-width: 55%
 
-.column-left
-    max-width: 20%

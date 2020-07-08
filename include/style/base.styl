@@ -4,7 +4,7 @@ bulma-stylus-root = '../../../../node_modules/bulma-stylus/stylus'
  *   Override Bulma CSS Framework
  * --------------------------------- */
 $body-size ?= 14px
-$body-background-color ?= #f7f7f7
+$body-background-color ?= #f4f5f5
 
 $family-sans-serif ?= Ubuntu, Roboto, 'Open Sans', 'Microsoft YaHei', sans-serif
 $family-code ?= 'Source Code Pro', monospace, 'Microsoft YaHei'
@@ -25,6 +25,8 @@ $tablet ?= 769px
 $desktop ?= 1024px
 $widescreen ?= 1216px
 $fullhd ?= 1408px
+
+$navbar-height ?= 58px
 
 $shadow ?= 0 4px 10px rgba(0, 0, 0, 0.05)
 
@@ -70,7 +72,9 @@ body
     min-height: 100%
     display: flex
     flex-direction: column
-    background: #f4f5f5;
+    background: $body-background-color
+    position: relative
+    padding-top: $navbar-height
 
 body > .section
     flex-grow: 1

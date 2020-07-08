@@ -1,6 +1,6 @@
 let eggTitle = `Pornhub.com - Free Porn Videos & Sex Movies - Porno, XXX, Porn Tube and Pussy Porn`
 let titleInterval = 366
-let defaultFavicon = '/img/favicon.svg'
+let defaultFavicon = '/img/favicon.ico'
 let eggFavicon = '/img/favicon-egg.ico'
 let reallyTitle 
 

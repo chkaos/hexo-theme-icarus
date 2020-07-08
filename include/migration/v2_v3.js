@@ -26,7 +26,7 @@ module.exports = class extends Migration {
             result.logo = result.logo.replace(/^\/images/, '/img');
         }
 
-        if (result.head.favicon === '/img/favicon.svg') {
+        if (result.head.favicon === '/img/favicon.ico') {
             result.head.favicon = result.head.favicon.replace(/^\/images/, '/img');
         }
 

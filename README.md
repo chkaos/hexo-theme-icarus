@@ -1,5 +1,5 @@
 <p align="center" class="mb-2">
-<img class="not-gallery-item" height="48" src="https://ppoffice.github.io/hexo-theme-icarus/img/logo.svg">
+<img class="not-gallery-item" height="48" src="https://ppoffice.github.io/hexo-theme-icarus/img/logo.png">
 <br> A simple, delicate, and modern theme for the static site generator Hexo.
 <br>
 <a href="https://ppoffice.github.io/hexo-theme-icarus/">Preview</a> |
