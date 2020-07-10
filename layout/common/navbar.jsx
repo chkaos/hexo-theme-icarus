@@ -106,7 +106,7 @@ class Navbar extends Component {
               <a
                 class="navbar-item"
                 id="night-nav"
-                title="Night Mode"
+                title="夜间模式"
                 href="javascript:;"
               >
                 <i class="fas fa-moon" id="night-icon"></i>

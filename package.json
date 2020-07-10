@@ -1,13 +1,13 @@
 {
   "name": "hexo-theme-icarus",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "private": true,
   "engines": {
     "node": ">=8.3.0"
   },
   "description": "A simple, delicate, and modern theme for Hexo",
   "repository": "https://github.com/ppoffice/hexo-theme-icarus.git",
-  "author": "ppoffice <zrp1994@gmail.com>",
+  "author": "chkaos",
   "license": "MIT",
   "scripts": {
     "lint": "eslint --ext .js --ext .jsx --ext .json ."

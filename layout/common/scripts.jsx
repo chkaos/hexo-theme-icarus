@@ -55,6 +55,7 @@ module.exports = class extends Component {
             <script type="text/javascript" src={url_for('/js/egg.js')}></script>
             <script src={url_for('/js/main.js')} defer={true}></script>
             <script src={url_for('/js/music.js')} defer={true}></script>
+            <script src={url_for('/js/copyright.js')}></script>
         </Fragment>;
     }
 };
