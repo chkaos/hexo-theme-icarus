@@ -1,31 +1,40 @@
 // night Mode
 // author by removef
 // https://removeif.github.io/
-night-color = rgba(0,0,0,0.2)
-night-bg-color = #202124
-night-color-hover = #7a7a7a
-night-link = #3273dc
 
 .night {
     
     color: silver!important;
-    background-color: night-bg-color;
+    background-color: $night-bg-color;
 
     .aplayer .aplayer-miniswitcher {
         background:#c0c0c0 !important;
     }
 
     .navbar-highlight{
-        background-color night-color !important;
+        background-color $night-color !important;
     }
+    .content h1, h2, h3, h4  {
+        color:#c0c0c0 
+    }
+
+    .article-cover {
+        color: #fff;
+        background-color $night-color !important;
+
+        .content-title a {
+            color: #fff !important;
+        }
+    }
+        
     .content blockquote {
-        background-color: night-color
+        background-color: $night-color
     }
     .button.is-light {
-        background-color: night-color;
+        background-color: $night-color;
     }
     .tag:not(body) {
-        background-color: night-color;
+        background-color: $night-color;
     }
 
     strong {
@@ -33,17 +42,17 @@ night-link = #3273dc
     }
 
     .time-axis-achievement {
-        background-color: night-color;
+        background-color: $night-color;
         color: white
     }
 
     .time-axis-title {
-        background-color: night-color;
+        background-color: $night-color;
         color: white
     }
 
     .pagination .pagination-link:not(.is-current), .pagination .pagination-previous, .pagination .pagination-next {
-        background-color: night-color;
+        background-color: $night-color;
     }
 
     .button.is-white {
@@ -59,25 +68,25 @@ night-link = #3273dc
     }
 
     hr{
-        background-color: night-color;
+        background-color: $night-color;
     }
 
     .left-navbar-menu .navbar-item:hover{
-        background-color night-color-hover;
-        color night-link
+        background-color $$night-color-hover
+        color $night-link
     }
 
     .menu-list a:hover {
-        background-color night-color-hover;
-        color night-link
+        background-color $$night-color-hover
+        color $night-link
     }
     .menu-list a {
         color silver
     }
 
     .level a:hover {
-        //background-color: night-color-hover;
-        color night-link !important
+        //background-color: $$night-color-hover;
+        color $night-link !important
     }
 
     .level .is-rounded:hover {
@@ -85,8 +94,8 @@ night-link = #3273dc
     }
 
     .level .level-item.is-marginless:hover {
-        background-color: night-color;
-        color night-link
+        background-color: $night-color;
+        color $night-link
     }
 
     .level .level-item.is-link:hover {
@@ -99,19 +108,19 @@ night-link = #3273dc
     //}
 
     .navbar-menu a:hover {
-        color night-link
+        color $night-link
     }
 
     .article-post-copyright {
-        background-color night-color !important
+        background-color $night-color !important
     }
 
     #back-to-top:hover {
-        color night-link
+        color $night-link
     }
 
     .tags.has-addons .tag:hover {
-        color night-link
+        color $night-link
     }
 
     input {
@@ -123,15 +132,15 @@ night-link = #3273dc
         color silver
     }
 
-    .card:hover {
-      box-shadow: 0 -2px 10px rgba(0, 0, 0, .8)
-    }
+    // .card:hover {
+    //   box-shadow: 0 -2px 10px rgba(0, 0, 0, .8)
+    // }
 
     .has-text-grey {
         color silver !important
     }
     .has-link-black-ter {
-        color night-link !important
+        color $night-link !important
     }
     .has-link-grey.-link {
         color silver
@@ -157,7 +166,7 @@ night-link = #3273dc
     }
 
     .has-text-black-ter:hover {
-        color night-link !important
+        color $night-link !important
     }
 
     .navbar-item, .navbar-link {
@@ -169,7 +178,7 @@ night-link = #3273dc
     }
 
     .level-item.tag.is-danger {
-        background-color night-link !important
+        background-color $night-link !important
         color silver
     }
 
@@ -178,44 +187,44 @@ night-link = #3273dc
     }
 
     .music-container #musiclist {
-        background night-color
+        background $night-color
     }
 
     .meplayer-container {
-        background-color night-color
+        background-color $night-color
     }
 
     // --removeif
     .navbar {
-        background-color night-color
+        background-color $night-color
     }
     .card {
-        background-color night-color
+        background-color $night-color
     }
     .footer {
-        background-color night-color
+        background-color $night-color
     }
     .button.is-white {
-        background-color night-color
+        background-color $night-color
     }
     .cardm {
-        background-color night-color
+        background-color $night-color
     }
     .waifu-tips {
-        background-color night-color
+        background-color $night-color
         color silver
     }
     // --
 
     .has-link-grey.-link:hover {
-        color night-link !important
+        color $night-link !important
     }
     .has-link-black-ter:hover {
-        color night-link !important
+        color $night-link !important
     }
 
     .timeline .media:last-child:after {
-        background-color night-color
+        background-color $night-color
     }
 
     .level-item.tag.is-danger,
@@ -293,7 +302,7 @@ night-link = #3273dc
     }
 
     textarea {
-        background-color night-color;
+        background-color $night-color;
         color white;
     }
 
@@ -305,7 +314,7 @@ night-link = #3273dc
         background-color: black;
     }
     .ins-section-container {
-        background-color: night-color;
+        background-color: $night-color;
         color: silver;
     }
     .searchbox-container, .searchbox-input, .searchbox-header {

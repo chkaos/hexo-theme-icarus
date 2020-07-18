@@ -26,6 +26,9 @@ widget:
     subscribe: '订阅'
     adsense: '广告'
 article:
+    original: '原创'
+    reprint: '转载'
+    translation: '翻译'
     more: '阅读更多'
     comments: '评论'
     read: '读完'

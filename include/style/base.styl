@@ -20,11 +20,15 @@ $custom-colors ?= {
 $navbar-item-active-color ?= $primary
 $footer-background-color ?= $scheme-main
 
+$radius = 2px
 $gap ?= 64px
 $tablet ?= 769px
 $desktop ?= 1024px
 $widescreen ?= 1216px
 $fullhd ?= 1408px
+
+$sm-gap ?= .618rem
+$xs-gap ?= $sm-gap/2
 
 $navbar-height ?= 58px
 
@@ -41,6 +45,7 @@ $card-shadow ?= $shadow, 0 0 1px rgba(0, 0, 0, 0.1)
 
 $content-heading-weight ?= $weight-normal
 
+$module-hover-bg ?= rgba(197, 197, 197, 0.4)
 
 $logo-height ?= 1.75rem
 
@@ -61,6 +66,11 @@ $colors = merge($colors, $custom-colors)
 @import bulma-stylus-root + '/grid/_all'
 @import bulma-stylus-root + '/layout/_all'
 
+$night-color ?= rgba(0,0,0,0.9)
+$night-bg-color ?= #202124
+$night-color-hover ?= #7a7a7a
+$night-link ?= #3273dc
+
 html
     height: 100%
     -webkit-text-size-adjust: 100%
@@ -75,6 +85,7 @@ body
     background: $body-background-color
     position: relative
     padding-top: $navbar-height
+    -webkit-font-smoothing: antialiased;
 
 body > .section
     flex-grow: 1
@@ -82,17 +93,24 @@ body > .section
 
 // 滚动条
 ::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+  width: $sm-gap;
+  height: $sm-gap;
+  background: hsla(0, 0%, 100%, 0.6);
 }
+
 ::-webkit-scrollbar-track {
-    border-radius: 3px;
-    background: rgba(0,0,0,0.08);
-    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.08);
+  border-radius: 0;
 }
-/* 滚动条滑块 */
+
 ::-webkit-scrollbar-thumb {
-    border-radius: 3px;
-    background: rgba(0,0,0,0.12);
-    -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  border-radius: 0;
+  background-color: rgba(95, 95, 95, 0.4);
+  transition: background-color .1s;
+
+  &:hover {
+    background-color: rgba(95, 95, 95, 0.7);
+  }
 }
+
+.column
+    padding: .375rem

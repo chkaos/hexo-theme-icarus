@@ -1,6 +1,7 @@
 /* ---------------------------------
  *         Responsive Layout
  * --------------------------------- */
+
 +widescreen()
     .is-3-column .container, .is-1-column .container, .is-2-column .container
         max-width: $desktop - 2 * $gap
@@ -10,9 +11,14 @@
 
     .column-left
         max-width: 20%
+    
+    .left-navbar
+        position: -webkit-sticky
+        position: sticky
+        top: calc(1.125rem + 58px)
+        z-index: 99
 
 +fullhd()
-
     .is-3-column .container, .is-1-column .container, .is-2-column .container
         max-width: $widescreen - 2 * $gap
         width: $widescreen - 2 * $gap
@@ -27,19 +33,19 @@
     .is-sticky
         position: -webkit-sticky
         position: sticky
-        top: 1.5rem
+        top: calc(1.125rem + 58px)
         z-index: 99
 
     .column-main, .column-left, .column-right, .column-right-shadow
         &.is-sticky
-            top: .75rem
+            // top: .75rem
             align-self: flex-start
 
 +mobile()
     .section
-        padding: 1.5rem 1rem
+        padding 1.5rem 1rem
+
     .aplayer 
-        display: none
+        display none
 
 // overwrite
-

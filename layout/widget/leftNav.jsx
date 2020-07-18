@@ -23,7 +23,7 @@ class leftNav extends Component {
 
     return (
       <Fragment>
-        <div class="card">
+        <div class="card left-navbar">
           <div class="card-content">
             <div class="left-navbar-menu">
               {Object.keys(menu).length ? (

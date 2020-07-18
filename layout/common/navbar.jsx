@@ -154,7 +154,7 @@ module.exports = cacheComponent(Navbar, "common.navbar", (props) => {
 
   return {
     logo,
-    logoText : author.toUpperCase(),
+    logoText : author,
     logoUrl: url_for(logo),
     siteUrl: url_for("/"),
     siteTitle: subtitle,

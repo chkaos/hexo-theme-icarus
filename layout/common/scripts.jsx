@@ -56,6 +56,8 @@ module.exports = class extends Component {
             <script src={url_for('/js/main.js')} defer={true}></script>
             <script src={url_for('/js/music.js')} defer={true}></script>
             <script src={url_for('/js/copyright.js')}></script>
+            {/* instant.page uses just-in-time preloading */}
+            <script src={url_for('/js/instant.page.js')} type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>
         </Fragment>;
     }
 };

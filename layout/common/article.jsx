@@ -1,4 +1,5 @@
 const moment = require("moment");
+const crypto = require("crypto");
 const { Component, Fragment } = require("inferno");
 const Share = require("./share");
 const Donates = require("./donates");
@@ -34,223 +35,263 @@ module.exports = class extends Component {
 
     const indexLaunguage = config.language || "en";
     const language = page.lang || page.language || config.language || "en";
-    const myPermalink = config.url + config.root + page.path;
+    const permalink = config.url + config.root + page.path;
+    const isArticleDetail = !index;
+    const isNotDetail = !index;
+    const id = page.abbrlink;
+    const md5Id = crypto.createHash("md5").update(id).digest("hex");
 
-    return (
-      <Fragment>
-        {/* Main content */}
-        <div class="card">
-          {/* Thumbnail */}
-          {has_thumbnail(page) ? (
-            <div class="card-image">
-              {index ? (
-                <a href={url_for(page.link || page.path)} class="image is-7by3">
-                  <img
-                    class="thumbnail"
-                    src={get_thumbnail(page)}
-                    alt={page.title || get_thumbnail(page)}
-                  />
-                </a>
-              ) : (
-                <span class="image is-7by3">
-                  <img
-                    class="thumbnail"
-                    src={get_thumbnail(page)}
-                    alt={page.title || get_thumbnail(page)}
-                  />
-                </span>
-              )}
-            </div>
-          ) : null}
-          {/* Metadata */}
-          <article
-            class={`card-content article${
-              "direction" in page ? " " + page.direction : ""
-            }`}
-            role="article"
-          >
-            {page.layout !== "page" ? (
-              <div class="article-meta size-small is-uppercase level is-mobile">
-                <div class="level-left">
-                  {/* Date */}
-                  <time
-                    class="level-item"
-                    dateTime={date_xml(page.date)}
-                    title={date_xml(page.date)}
-                  >
-                    {date(page.date)}
-                  </time>
-                  {/* author */}
-                  {page.author ? (
-                    <span class="level-item"> {page.author} </span>
-                  ) : null}
-                  {/* Categories */}
-                  {page.categories && page.categories.length ? (
-                    <span class="level-item">
-                      {(() => {
-                        const categories = [];
-                        page.categories.forEach((category, i) => {
-                          categories.push(
-                            <a class="link-muted" href={url_for(category.path)}>
-                              {category.name}
-                            </a>
-                          );
-                          if (i < page.categories.length - 1) {
-                            categories.push(<span>&nbsp;/&nbsp;</span>);
-                          }
-                        });
-                        return categories;
-                      })()}
-                    </span>
-                  ) : null}
-                  {/* Read time */}
-                  {article && article.readtime && article.readtime === true ? (
-                    <span class="level-item">
-                      {(() => {
-                        const words = getWordCount(page._content);
-                        const time = moment.duration(
-                          (words / 150.0) * 60,
-                          "seconds"
-                        );
-                        return `${time
-                          .locale(index ? indexLaunguage : language)
-                          .humanize()} ${__("article.read")} (${__(
-                          "article.about"
-                        )} ${words} ${__("article.words")})`;
-                      })()}
-                    </span>
-                  ) : null}
-                  {/* Visitor counter */}
-                  {!index && plugins && plugins.busuanzi === true ? (
-                    <span
+    const words = getWordCount(page._content);
+    const time = moment.duration((words / 150.0) * 60, "seconds");
+    const timeStr = time
+      .locale(language)
+      .humanize()
+      .replace("a few seconds", "fast")
+      .replace("hours", "h")
+      .replace("minutes", "m")
+      .replace("seconds", "s")
+      .replace("days", "d");
+
+    const wordsCount = (words / 1000.0).toFixed(1) + "k";
+
+    const pageType = page.type;
+    if (isArticleDetail) {
+      return (
+        <Fragment>
+          {/* Main content */}
+          <div class="card">
+            {/* Metadata */}
+            <article
+              class={`card-content article${
+                "direction" in page ? " " + page.direction : ""
+              }`}
+              role="article"
+            >
+              {/* Title */}
+              <h1 class="title is-3 is-size-4-mobile">{page.title}</h1>
+              {page.layout !== "page" ? (
+                <div class="article-meta size-small is-uppercase level is-mobile">
+                  <div class="level-left">
+                    {/* Date */}
+                    <time
                       class="level-item"
-                      id="busuanzi_container_page_pv"
+                      dateTime={date_xml(page.date)}
+                      title={date_xml(page.date)}
+                    >
+                      {date(page.date)}
+                    </time>
+                    {/* author */}
+                    {page.author ? (
+                      <span class="level-item"> {page.author} </span>
+                    ) : null}
+                    {/* Categories */}
+                    {page.categories && page.categories.length ? (
+                      <span class="level-item">
+                        {(() => {
+                          const categories = [];
+                          page.categories.forEach((category, i) => {
+                            categories.push(
+                              <a
+                                class="link-muted"
+                                href={url_for(category.path)}
+                              >
+                                {category.name}
+                              </a>
+                            );
+                            if (i < page.categories.length - 1) {
+                              categories.push(<span>&nbsp;/&nbsp;</span>);
+                            }
+                          });
+                          return categories;
+                        })()}
+                      </span>
+                    ) : null}
+                    {/* Read time */}
+                    {article &&
+                    article.readtime &&
+                    article.readtime === true ? (
+                      <span class="level-item">
+                        {(() => {
+                          return `${timeStr} ${__("article.read")} (${__(
+                            "article.about"
+                          )} ${wordsCount} ${__("article.words")})`;
+                        })()}
+                      </span>
+                    ) : null}
+                    {/* Visitor counter */}
+                    {plugins && plugins.busuanzi === true ? (
+                      <span
+                        class="level-item"
+                        id="busuanzi_container_page_pv"
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            '<i class="far fa-eye"></i>' +
+                            _p(
+                              "plugin.visit",
+                              '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>'
+                            ),
+                        }}
+                      ></span>
+                    ) : null}
+                  </div>
+                </div>
+              ) : null}
+
+              {/* Content/Excerpt */}
+              <div
+                class="content"
+                dangerouslySetInnerHTML={{
+                  __html:
+                    isNotDetail && page.excerpt ? page.excerpt : page.content,
+                }}
+              ></div>
+              {isArticleDetail && page.layout == "post" ? (
+                <ul class="article-post-copyright">
+                  <li>
+                    <strong>{__("article.copyright.title")}</strong>
+                    <a href={permalink}>{page.title}</a>
+                  </li>
+                  <li>
+                    <strong>{__("article.copyright.author")}</strong>
+                    <a href={url_for(config.url)}>{config.author}</a>
+                  </li>
+                  <li>
+                    <strong>{__("article.copyright.link")}</strong>
+                    <a href={permalink}>{permalink}</a>
+                  </li>
+                  <li>
+                    <strong>{__("article.copyright.copyright_title")}</strong>
+                    <span
                       dangerouslySetInnerHTML={{
-                        __html:
-                          '<i class="far fa-eye"></i>' +
-                          _p(
-                            "plugin.visit",
-                            '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>'
-                          ),
+                        __html: __("article.copyright.copyright_content"),
                       }}
                     ></span>
-                  ) : null}
+                  </li>
+                </ul>
+              ) : null}
+              {/* Tags */}
+              {isArticleDetail && page.tags && page.tags.length ? (
+                <div class="article-tags size-small mb-4">
+                  <span class="mr-2">#</span>
+                  {page.tags.map((tag) => {
+                    return (
+                      <a
+                        class="link-muted mr-2"
+                        rel="tag"
+                        href={url_for(tag.path)}
+                      >
+                        {tag.name}
+                      </a>
+                    );
+                  })}
                 </div>
-              </div>
-            ) : null}
-            {/* Title */}
-            <h1 class="title is-3 is-size-4-mobile">
-              {index ? (
-                <a class="link-muted" href={url_for(page.link || page.path)}>
+              ) : null}
+              {/*copyright*/}
+
+              {<Share config={config} page={page} helper={helper} />}
+            </article>
+          </div>
+          {/* Donate button */}
+          <Donates config={config} helper={helper} />
+          {/* Post navigation */}
+          {page.prev || page.next ? (
+            <nav class="post-navigation mt-4 level is-mobile">
+              {page.prev ? (
+                <div class="level-start">
+                  <a
+                    class={`article-nav-prev level level-item${
+                      !page.prev ? " is-hidden-mobile" : ""
+                    } link-muted`}
+                    href={url_for(page.prev.path)}
+                  >
+                    <i class="level-item fas fa-chevron-left"></i>
+                    <span class="level-item">{page.prev.title}</span>
+                  </a>
+                </div>
+              ) : null}
+              {page.next ? (
+                <div class="level-end">
+                  <a
+                    class={`article-nav-next level level-item${
+                      !page.next ? " is-hidden-mobile" : ""
+                    } link-muted`}
+                    href={url_for(page.next.path)}
+                  >
+                    <span class="level-item">{page.next.title}</span>
+                    <i class="level-item fas fa-chevron-right"></i>
+                  </a>
+                </div>
+              ) : null}
+            </nav>
+          ) : null}
+          {/* Comment */}
+          {isArticleDetail ? (
+            <Comment config={config} page={page} helper={helper} />
+          ) : null}
+        </Fragment>
+      );
+    } else {
+      return (
+        <div class="article-cover">
+          <div class="content">
+            <div class="thumb">
+              <a href={url_for(page.link || page.path)}>
+                <span class={`article-type ${pageType}`}>
+                  <span>{__("article." + pageType)}</span>
+                </span>
+                <img
+                  class="thumb-img"
+                  src={get_thumbnail(page)}
+                  alt={page.title || get_thumbnail(page)}
+                />
+              </a>
+            </div>
+            <div class="content-body">
+              <h5 class="content-title">
+                <a href={url_for(page.link || page.path)} title={page.title}>
                   {page.title}
                 </a>
-              ) : (
-                page.title
-              )}
-            </h1>
-            {/* Content/Excerpt */}
-            <div
-              class="content"
-              dangerouslySetInnerHTML={{
-                __html: index && page.excerpt ? page.excerpt : page.content,
-              }}
-            ></div>
-            {!index && page.layout == "post" ? (
-              <ul class="article-post-copyright">
-                <li>
-                  <strong>{__('article.copyright.title')}</strong>
-                  <a href={myPermalink}>{page.title}</a>
-                </li>
-                <li>
-                  <strong>{__('article.copyright.author')}</strong>
-                  <a href={url_for(config.url)}>{config.author}</a>
-                </li>
-                <li>
-                  <strong>{__('article.copyright.link')}</strong>
-                  <a href={myPermalink}>{myPermalink}</a>
-                </li>
-                <li>
-                  <strong>{__('article.copyright.copyright_title')}</strong>
-                  <span
-                    dangerouslySetInnerHTML={{
-                      __html: __('article.copyright.copyright_content'),
-                    }}
-                  ></span>
-                </li>
-              </ul>
-            ) : null}
-            {/* Tags */}
-            {!index && page.tags && page.tags.length ? (
-              <div class="article-tags size-small mb-4">
-                <span class="mr-2">#</span>
-                {page.tags.map((tag) => {
-                  return (
-                    <a
-                      class="link-muted mr-2"
-                      rel="tag"
-                      href={url_for(tag.path)}
-                    >
-                      {tag.name}
-                    </a>
-                  );
-                })}
+              </h5>
+              <p class="description">{page.description}</p>
+              <div class="meta">
+                <span class="date">
+                  <i class="fa fa-clock" />
+                  <span>{date(page.date)}</span>
+                </span>
+                <span class="comments">
+                  <span class="display-none-class">{id}</span>
+                  <i class="far fa-comment-dots" />
+                  &nbsp;
+                  <span class="commentCount" id={md5Id}>
+                    99+
+                  </span>
+                </span>
+                <span class="likes">
+                  <i class="fa fa-redo"></i>
+                  <span>{timeStr}</span>
+                </span>
+                <span class="likes">
+                  <i class="fa fa-pencil-alt"></i>
+                  <span>{wordsCount}</span>
+                </span>
+                <span class="categories">
+                  <i class="fa fa-th-list" />
+                  {(() => {
+                    const categories = [];
+                    page.categories.forEach((category, i) => {
+                      categories.push(<span>{category.name}</span>);
+                      if (i < page.categories.length - 1) {
+                        categories.push(<span>&nbsp;/&nbsp;</span>);
+                      }
+                    });
+                    return categories;
+                  })()}
+                </span>
               </div>
-            ) : null}
-            {/*copyright*/}
-            
-            {/* "Read more" button */}
-            {index && page.excerpt ? (
-              <a
-                class="article-more button is-small size-small"
-                href={`${url_for(page.path)}#more`}
-              >
-                {__("article.more")}
-              </a>
-            ) : null}
-            {/* Share button */}
-            {!index ? (
-              <Share config={config} page={page} helper={helper} />
-            ) : null}
-          </article>
+            </div>
+          </div>
         </div>
-        {/* Donate button */}
-        {!index ? <Donates config={config} helper={helper} /> : null}
-        {/* Post navigation */}
-        {!index && (page.prev || page.next) ? (
-          <nav class="post-navigation mt-4 level is-mobile">
-            {page.prev ? (
-              <div class="level-start">
-                <a
-                  class={`article-nav-prev level level-item${
-                    !page.prev ? " is-hidden-mobile" : ""
-                  } link-muted`}
-                  href={url_for(page.prev.path)}
-                >
-                  <i class="level-item fas fa-chevron-left"></i>
-                  <span class="level-item">{page.prev.title}</span>
-                </a>
-              </div>
-            ) : null}
-            {page.next ? (
-              <div class="level-end">
-                <a
-                  class={`article-nav-next level level-item${
-                    !page.next ? " is-hidden-mobile" : ""
-                  } link-muted`}
-                  href={url_for(page.next.path)}
-                >
-                  <span class="level-item">{page.next.title}</span>
-                  <i class="level-item fas fa-chevron-right"></i>
-                </a>
-              </div>
-            ) : null}
-          </nav>
-        ) : null}
-        {/* Comment */}
-        {!index ? (
-          <Comment config={config} page={page} helper={helper} />
-        ) : null}
-      </Fragment>
-    );
+      );
+    }
   }
 };
