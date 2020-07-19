@@ -84,67 +84,6 @@ module.exports = class extends Component {
                 <span>{__("article." + pageType)}</span>
               </div>
 
-              {/* <div class="article-meta size-small is-uppercase level is-mobile">
-                <div class="level-left">
-                  {/* Date */}
-                  {/* <time
-                    class="level-item"
-                    dateTime={date_xml(page.date)}
-                    title={date_xml(page.date)}
-                  >
-                    {date(page.date)}
-                  </time> */}
-                  {/* author */}
-                  {/* {page.author ? (
-                    <span class="level-item"> {page.author} </span>
-                  ) : null} */}
-                  {/* Categories */}
-                  {/* {page.categories && page.categories.length ? (
-                    <span class="level-item">
-                      {(() => {
-                        const categories = [];
-                        page.categories.forEach((category, i) => {
-                          categories.push(
-                            <a class="link-muted" href={url_for(category.path)}>
-                              {category.name}
-                            </a>
-                          );
-                          if (i < page.categories.length - 1) {
-                            categories.push(<span>&nbsp;/&nbsp;</span>);
-                          }
-                        });
-                        return categories;
-                      })()}
-                    </span>
-                  ) : null} */}
-                  {/* Read time */}
-                  {/* {article && article.readtime && article.readtime === true ? (
-                    <span class="level-item">
-                      {(() => {
-                        return `${timeStr} ${__("article.read")} (${__(
-                          "article.about"
-                        )} ${wordsCount} ${__("article.words")})`;
-                      })()}
-                    </span>
-                  ) : null} */}
-                  {/* Visitor counter */}
-                  {/* {plugins && plugins.busuanzi === true ? (
-                    <span
-                      class="level-item"
-                      id="busuanzi_container_page_pv"
-                      dangerouslySetInnerHTML={{
-                        __html:
-                          '<i class="far fa-eye"></i>' +
-                          _p(
-                            "plugin.visit",
-                            '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>'
-                          ),
-                      }}
-                    ></span>
-                  ) : null} */}
-                {/* </div>
-              </div> */}
-
               {/* Content/Excerpt */}
               <div
                 class="content"
@@ -163,7 +102,7 @@ module.exports = class extends Component {
                       dangerouslySetInnerHTML={{
                         __html:
                           _p(
-                            "plugin.visit",
+                            "plugin.visitor",
                             '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>'
                           ),
                       }}>

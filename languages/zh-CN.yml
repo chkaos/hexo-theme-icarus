@@ -50,10 +50,12 @@ donate:
 plugin:
     backtotop: '回到顶端'
     visit: '%s次访问'
-    visitor: '共%s个访客'
+    visitor: '共 %s 人围观'
 search:
     search: '搜索'
     hint: '想要查找什么...'
     no_result: '未找到搜索结果'
     untitled: '(无标题)'
     empty_preview: '(无内容预览)'
+footer:
+    website_time: '本站自 <strong>|</strong> 已运行 <strong>|</strong> 天 <strong>|</strong> 小时 <strong>|</strong> 分 <strong>|</strong> 秒'
