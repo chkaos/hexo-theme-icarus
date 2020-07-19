@@ -43,6 +43,7 @@ module.exports = class extends Component {
         };`;
 
         return <Fragment>
+            <script src={url_for('/js/lazyload.js')}></script>
             <script src={url_for('/js/utils.js')}></script>
             <script src={cdn('jquery', '3.3.1', 'dist/jquery.min.js')}></script>
             <script src={cdn('moment', '2.22.2', 'min/moment-with-locales.min.js')}></script>
@@ -54,7 +55,7 @@ module.exports = class extends Component {
             <script type="text/javascript" src={url_for('/js/theme.js')}></script>
             <script type="text/javascript" src={url_for('/js/egg.js')}></script>
             <script src={url_for('/js/main.js')} defer={true}></script>
-            <script src={url_for('/js/music.js')} defer={true}></script>
+            <script src={url_for('/js/music.js')}></script>
             <script src={url_for('/js/copyright.js')}></script>
             {/* instant.page uses just-in-time preloading */}
             <script src={url_for('/js/instant.page.js')} type="module" integrity="sha384-by67kQnR+pyfy8yWP4kPO12fHKRLHZPfEsiSXR8u2IKcTdxD805MGUXBzVPnkLHw"></script>

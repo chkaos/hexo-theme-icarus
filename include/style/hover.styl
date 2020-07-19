@@ -1,2 +1,15 @@
 .menu-list a:hover
     background-color $module-hover-color
+
+// 图片懒加载样式
+img.lazyload 
+    transition: filter 0.375s ease 0s;
+
+img.lazyload:not(.loaded) 
+    -webkit-filter: blur(8px);
+    filter: blur(8px);
+    padding-bottom: 40.000%
+
+img.lazyload:not(.loaded) {
+    padding-bottom: 40.000%
+}
