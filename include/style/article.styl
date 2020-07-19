@@ -5,6 +5,17 @@ $article-font-size ?= 1.1rem
 $accent ?= #4caf50
 $red ?= #ff5722
 
+.original 
+    background-color: rgba($accent, .5)
+
+
+.reprint 
+    background-color: rgba($red, .5)
+
+
+.translation 
+    background-color: rgba($primary, .5)
+
 article
     &.media
         .media-content
@@ -18,6 +29,21 @@ article
 
     &.article
         padding: 1rem 2rem
+        
+        .article-type
+            position: absolute;
+            top: -18px;
+            left: -32px;
+            transform: rotate(-45deg);
+            width: 6rem;
+            height: 4rem;
+            line-height: 5.8rem;
+            text-align: center;
+            text-transform: uppercase;
+            transform-origin: center;
+            color: #fff;
+            font-weight: 700;
+            font-size: 12.432px;
 
         .title
             text-align: center
@@ -102,7 +128,7 @@ article
         
         .thumb-img 
             opacity: .95 !important
-            transform: scale(1.1, 1.1)
+            transform: scale(1.05, 1.05)
 
     .content
         $height ?= 10rem
@@ -134,18 +160,6 @@ article
                 color: #fff;
                 text-align: center;
                 text-transform: uppercase;
-
-                &.original {
-                    background-color: rgba($accent, .5);
-                }
-
-                &.reprint {
-                    background-color: rgba($red, .5);
-                }
-
-                &.translation {
-                    background-color: rgba($primary, .5);
-                }
 
             .thumb-img 
                 min-width: 100%
@@ -323,5 +337,9 @@ article
         left: 0
         width: 100%
         height: 100%
+
+
+
+
 
     

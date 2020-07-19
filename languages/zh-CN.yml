@@ -39,7 +39,7 @@ article:
         author: '本文作者 : '
         link: '本文链接 : '
         copyright_title: '版权声明 : '
-        copyright_content: '本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明出处！'
+        copyright_content: '自由转载-署名-非商业性使用 | <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="external nofollow" target="_blank">CC BY-NC-SA 4.0</a>'
 donate:
     title: '喜欢这篇文章？打赏一下作者吧'
     alipay: '支付宝'

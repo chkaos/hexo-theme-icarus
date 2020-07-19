@@ -24,7 +24,8 @@
                     "Archives": "/archives",
                     "Categories": "/categories",
                     "Tags": "/tags",
-                    "About": "/about"
+                    "About": "/about",
+                    "MIT挑战": "/MIT-Challenge"
                 }
             ],
             "nullable": true

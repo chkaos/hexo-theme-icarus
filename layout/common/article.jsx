@@ -55,6 +55,16 @@ module.exports = class extends Component {
     const wordsCount = (words / 1000.0).toFixed(1) + "k";
 
     const pageType = page.type;
+
+    const categories = [];
+
+    page.categories.forEach((category, i) => {
+      categories.push(<span>{category.name}</span>);
+      if (i < page.categories.length - 1) {
+        categories.push(<span>&nbsp;/&nbsp;</span>);
+      }
+    });
+
     if (isArticleDetail) {
       return (
         <Fragment>
@@ -69,73 +79,71 @@ module.exports = class extends Component {
             >
               {/* Title */}
               <h1 class="title is-3 is-size-4-mobile">{page.title}</h1>
-              {page.layout !== "page" ? (
-                <div class="article-meta size-small is-uppercase level is-mobile">
-                  <div class="level-left">
-                    {/* Date */}
-                    <time
+              {/* type */}
+              <div class={`article-type ${pageType}`}>
+                <span>{__("article." + pageType)}</span>
+              </div>
+
+              {/* <div class="article-meta size-small is-uppercase level is-mobile">
+                <div class="level-left">
+                  {/* Date */}
+                  {/* <time
+                    class="level-item"
+                    dateTime={date_xml(page.date)}
+                    title={date_xml(page.date)}
+                  >
+                    {date(page.date)}
+                  </time> */}
+                  {/* author */}
+                  {/* {page.author ? (
+                    <span class="level-item"> {page.author} </span>
+                  ) : null} */}
+                  {/* Categories */}
+                  {/* {page.categories && page.categories.length ? (
+                    <span class="level-item">
+                      {(() => {
+                        const categories = [];
+                        page.categories.forEach((category, i) => {
+                          categories.push(
+                            <a class="link-muted" href={url_for(category.path)}>
+                              {category.name}
+                            </a>
+                          );
+                          if (i < page.categories.length - 1) {
+                            categories.push(<span>&nbsp;/&nbsp;</span>);
+                          }
+                        });
+                        return categories;
+                      })()}
+                    </span>
+                  ) : null} */}
+                  {/* Read time */}
+                  {/* {article && article.readtime && article.readtime === true ? (
+                    <span class="level-item">
+                      {(() => {
+                        return `${timeStr} ${__("article.read")} (${__(
+                          "article.about"
+                        )} ${wordsCount} ${__("article.words")})`;
+                      })()}
+                    </span>
+                  ) : null} */}
+                  {/* Visitor counter */}
+                  {/* {plugins && plugins.busuanzi === true ? (
+                    <span
                       class="level-item"
-                      dateTime={date_xml(page.date)}
-                      title={date_xml(page.date)}
-                    >
-                      {date(page.date)}
-                    </time>
-                    {/* author */}
-                    {page.author ? (
-                      <span class="level-item"> {page.author} </span>
-                    ) : null}
-                    {/* Categories */}
-                    {page.categories && page.categories.length ? (
-                      <span class="level-item">
-                        {(() => {
-                          const categories = [];
-                          page.categories.forEach((category, i) => {
-                            categories.push(
-                              <a
-                                class="link-muted"
-                                href={url_for(category.path)}
-                              >
-                                {category.name}
-                              </a>
-                            );
-                            if (i < page.categories.length - 1) {
-                              categories.push(<span>&nbsp;/&nbsp;</span>);
-                            }
-                          });
-                          return categories;
-                        })()}
-                      </span>
-                    ) : null}
-                    {/* Read time */}
-                    {article &&
-                    article.readtime &&
-                    article.readtime === true ? (
-                      <span class="level-item">
-                        {(() => {
-                          return `${timeStr} ${__("article.read")} (${__(
-                            "article.about"
-                          )} ${wordsCount} ${__("article.words")})`;
-                        })()}
-                      </span>
-                    ) : null}
-                    {/* Visitor counter */}
-                    {plugins && plugins.busuanzi === true ? (
-                      <span
-                        class="level-item"
-                        id="busuanzi_container_page_pv"
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            '<i class="far fa-eye"></i>' +
-                            _p(
-                              "plugin.visit",
-                              '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>'
-                            ),
-                        }}
-                      ></span>
-                    ) : null}
-                  </div>
-                </div>
-              ) : null}
+                      id="busuanzi_container_page_pv"
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          '<i class="far fa-eye"></i>' +
+                          _p(
+                            "plugin.visit",
+                            '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>'
+                          ),
+                      }}
+                    ></span>
+                  ) : null} */}
+                {/* </div>
+              </div> */}
 
               {/* Content/Excerpt */}
               <div
@@ -145,16 +153,39 @@ module.exports = class extends Component {
                     isNotDetail && page.excerpt ? page.excerpt : page.content,
                 }}
               ></div>
+              {/*copyright*/}
               {isArticleDetail && page.layout == "post" ? (
                 <ul class="article-post-copyright">
                   <li>
-                    <strong>{__("article.copyright.title")}</strong>
-                    <a href={permalink}>{page.title}</a>
+                    本文于 {date(page.date)} 发布在 {categories} 分类下，当前已有
+                    <span
+                      id="busuanzi_container_page_pv"
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          _p(
+                            "plugin.visit",
+                            '&nbsp;&nbsp;<span id="busuanzi_value_page_pv">0</span>'
+                          ),
+                      }}>
+                      </span>
                   </li>
-                  <li>
-                    <strong>{__("article.copyright.author")}</strong>
-                    <a href={url_for(config.url)}>{config.author}</a>
-                  </li>
+                  {page.tags && page.tags.length ? (
+                    <li>
+                      <strong>相关标签 : </strong>
+                      {page.tags.map((tag) => {
+                        return (
+                          <a
+                            class="link-muted mr-2"
+                            rel="tag"
+                            href={url_for(tag.path)}
+                          >
+                            {tag.name}
+                          </a>
+                        );
+                      })}
+                    </li>
+                  ) : null}
+
                   <li>
                     <strong>{__("article.copyright.link")}</strong>
                     <a href={permalink}>{permalink}</a>
@@ -168,23 +199,6 @@ module.exports = class extends Component {
                     ></span>
                   </li>
                 </ul>
-              ) : null}
-              {/* Tags */}
-              {isArticleDetail && page.tags && page.tags.length ? (
-                <div class="article-tags size-small mb-4">
-                  <span class="mr-2">#</span>
-                  {page.tags.map((tag) => {
-                    return (
-                      <a
-                        class="link-muted mr-2"
-                        rel="tag"
-                        href={url_for(tag.path)}
-                      >
-                        {tag.name}
-                      </a>
-                    );
-                  })}
-                </div>
               ) : null}
               {/*copyright*/}
 
@@ -276,16 +290,7 @@ module.exports = class extends Component {
                 </span>
                 <span class="categories">
                   <i class="fa fa-th-list" />
-                  {(() => {
-                    const categories = [];
-                    page.categories.forEach((category, i) => {
-                      categories.push(<span>{category.name}</span>);
-                      if (i < page.categories.length - 1) {
-                        categories.push(<span>&nbsp;/&nbsp;</span>);
-                      }
-                    });
-                    return categories;
-                  })()}
+                  {categories}
                 </span>
               </div>
             </div>
