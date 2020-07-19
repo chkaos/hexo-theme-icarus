@@ -41,7 +41,7 @@ class Navbar extends Component {
               {logo && logo.text ? (
                 logo.text
               ) : (
-                <img src={logoUrl} alt={siteTitle} height="32" />
+                <img class="no-lazy" src={logoUrl} alt={siteTitle} height="32" />
               )}
             </a>
             <div class="navbar-item navbar-text">{logoText}</div>
@@ -105,7 +105,7 @@ class Navbar extends Component {
               ) : null}
               <a
                 class="navbar-item"
-                id="night-nav"
+                id="btn-toggle-dark"
                 title="夜间模式"
                 href="javascript:;"
               >
