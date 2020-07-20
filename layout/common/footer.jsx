@@ -74,6 +74,10 @@ class Footer extends Component {
                 ></span>
               </p>
             ) : null}
+            <p class="size-small">
+                <a href="http://chkaos.gitee.io/"
+                >备用网址</a>
+              </p>
           </div>
         </div>
       </footer>
