@@ -1,11 +1,11 @@
 {
   "name": "hexo-theme-icarus",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "private": true,
   "engines": {
     "node": ">=8.3.0"
   },
-  "description": "A simple, delicate, and modern theme for Hexo",
+  "description": "Hexo theme for Chkaos",
   "repository": "https://github.com/ppoffice/hexo-theme-icarus.git",
   "author": "chkaos",
   "license": "MIT",
