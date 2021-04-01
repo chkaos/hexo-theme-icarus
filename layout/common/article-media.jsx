@@ -7,7 +7,7 @@ module.exports = class extends Component {
         return <article class="media">
             <div class="media-content">
                 <p><time dateTime={dateXml}>{date}</time></p>
-                <p class="title is-6"><a href={url} class="link-muted">{title}</a></p>
+                <p class="title is-6"><a href={url} class="link-muted media-title">{title}</a></p>
             </div>
         </article>;
     }
