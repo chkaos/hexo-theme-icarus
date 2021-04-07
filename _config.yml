@@ -318,7 +318,8 @@ plugins:
         # CNZZ website id
         web_id: 
     # Enable the lightGallery and Justified Gallery plugins
-    gallery: false
+    # http://sachinchoolur.github.io/lightGallery/docs/api.html
+    gallery: true
     # Google Analytics plugin settings
     # https://analytics.google.com
     google_analytics:
