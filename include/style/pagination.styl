@@ -33,12 +33,22 @@ $post-navigation-fg ?= $grey
     color: $post-navigation-fg
     display: flex
     font-weight: bold
-    .level-start, .level-end
-        max-width: 50%
+    margin-bottom: 1.5rem
+    overflow: hidden
+
+    .article-nav-prev, .article-nav-next
+        width: 50%
         overflow: hidden
         text-overflow: ellipsis
         white-space: nowrap
-    .level-item
-        margin-bottom: 0
-        display: inline
+
+    // .article-nav-prev
+    
+    .article-nav-next
+        text-align: right;
+
+    .fa-chevron-left  
+        margin-right 5px  
+    .fa-chevron-right
+        margin-left 5px  
     

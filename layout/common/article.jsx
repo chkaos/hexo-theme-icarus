@@ -152,33 +152,33 @@ module.exports = class extends Component {
           <Donates config={config} helper={helper} />
           {/* Post navigation */}
           {page.prev || page.next ? (
-            <nav class="post-navigation mt-4 level is-mobile">
+            <nav class="post-navigation mt-4 is-mobile">
               {page.prev ? (
-                <div class="level-start">
+                <div class="article-nav-prev">
                   <a
-                    class={`article-nav-prev level level-item${
+                    class={`${
                       !page.prev ? " is-hidden-mobile" : ""
                     } link-muted`}
                     href={url_for(page.prev.path)}
                   >
-                    <i class="level-item fas fa-chevron-left"></i>
-                    <span class="level-item">{page.prev.title}</span>
+                    <i class="fas fa-chevron-left"></i>
+                    <span>{page.prev.title}</span>
                   </a>
                 </div>
-              ) : null}
+              ) : <div class="article-nav-prev"></div>}
               {page.next ? (
-                <div class="level-end">
+                <div class="article-nav-next">
                   <a
-                    class={`article-nav-next level level-item${
+                    class={`${
                       !page.next ? " is-hidden-mobile" : ""
                     } link-muted`}
                     href={url_for(page.next.path)}
                   >
-                    <span class="level-item">{page.next.title}</span>
-                    <i class="level-item fas fa-chevron-right"></i>
+                    <span>{page.next.title}</span>
+                    <i class="fas fa-chevron-right"></i>
                   </a>
                 </div>
-              ) : null}
+              ) : <div class="article-nav-next"></div>}
             </nav>
           ) : null}
           {/* Comment */}
