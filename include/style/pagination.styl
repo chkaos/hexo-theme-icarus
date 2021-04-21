@@ -21,6 +21,14 @@ $post-navigation-fg ?= $grey
     .pagination-link.is-current
         background: $pagination-current-background-color
 
+    // 页码元素 hover 样式
+    .pagination-link:not(.is-current):hover
+        color $pagination-current-background-color
+    // 上下页按钮 hover 样式
+    .pagination-previous:hover,.pagination-next:hover
+        a
+            color $pagination-current-background-color
+
 .post-navigation
     color: $post-navigation-fg
     display: flex
