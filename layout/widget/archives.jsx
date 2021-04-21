@@ -32,7 +32,7 @@ class Archives extends Component {
                         {count >= 5 ?
                             <a className="level is-mobile is-marginless" href={allUrl}>
                                 <span className="level-start">
-                                    <span className="level-item">查看全部&gt;&gt;</span>
+                                    <span className="level-item">查看全部&nbsp;&gt;</span>
                                 </span>
                             </a> : null
                         }

@@ -25,7 +25,12 @@ $post-navigation-fg ?= $grey
     color: $post-navigation-fg
     display: flex
     font-weight: bold
-    
+    .level-start, .level-end
+        max-width: 50%
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
     .level-item
         margin-bottom: 0
+        display: inline
     

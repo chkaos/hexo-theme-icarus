@@ -10,7 +10,7 @@ module.exports = class extends Component {
         if (!Array.isArray(donates) || !donates.length) {
             return null;
         }
-        return <div class="card">
+        return <div class="card donate">
             <div class="card-content">
                 <h3 class="menu-label has-text-centered">{__('donate.title')}</h3>
                 <div class="buttons is-centered">

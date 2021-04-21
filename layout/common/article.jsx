@@ -111,15 +111,19 @@ module.exports = class extends Component {
                   {page.tags && page.tags.length ? (
                     <li>
                       <strong>相关标签 : </strong>
-                      {page.tags.map((tag) => {
+                      {page.tags.map((tag, i) => {
                         return (
-                          <a
-                            class="link-muted mr-2"
-                            rel="tag"
-                            href={url_for(tag.path)}
-                          >
-                            {tag.name}
-                          </a>
+                          <Fragment>
+                            <a
+                              class="link-muted mr-2"
+                              rel="tag"
+                              href={url_for(tag.path)}
+                            >
+                              {tag.name}
+                            </a>
+                            {/* 最后一个标签不加逗号 */}
+                            {i!==page.tags.length-1 ? <span>&sbquo;&nbsp;</span> : null}
+                          </Fragment>
                         );
                       })}
                     </li>

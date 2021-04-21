@@ -140,10 +140,10 @@ comment:
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Donation/
 donates:
     # Alipay donate button configurations
-    -
-        type: alipay
+    # -
+        # type: alipay
         # Alipay qrcode image URL
-        qrcode: ''
+        # qrcode: ''
     # "Buy me a coffee" donate button configurations
     # -
     #     type: buymeacoffee
@@ -165,7 +165,7 @@ donates:
     -
         type: wechat
         # Wechat qrcode image URL
-        qrcode: ''
+        qrcode: 'https://chkaos.oss-cn-hangzhou.aliyuncs.com/image/me/wechat.jpg'
 # Share plugin configurations
 # https://ppoffice.github.io/hexo-theme-icarus/categories/Plugins/Share/
 share:
