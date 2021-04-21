@@ -34,13 +34,10 @@ $post-navigation-fg ?= $grey
     display: flex
     font-weight: bold
     margin-bottom: 1.5rem
-    overflow: hidden
+    justify-content: space-between
 
     .article-nav-prev, .article-nav-next
-        width: 50%
-        overflow: hidden
-        text-overflow: ellipsis
-        white-space: nowrap
+        width: 45%
 
     // .article-nav-prev
     
@@ -50,5 +47,14 @@ $post-navigation-fg ?= $grey
     .fa-chevron-left  
         margin-right 5px  
     .fa-chevron-right
-        margin-left 5px  
+        margin-left 5px
+
+    .link-muted
+        display: flex
+
+    .article-nav-title
+        overflow: hidden
+        text-overflow: ellipsis
+        white-space: nowrap
+
     

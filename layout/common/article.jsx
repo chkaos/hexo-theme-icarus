@@ -156,25 +156,25 @@ module.exports = class extends Component {
               {page.prev ? (
                 <div class="article-nav-prev">
                   <a
-                    class={`${
+                    class={`link-muted${
                       !page.prev ? " is-hidden-mobile" : ""
-                    } link-muted`}
+                    }`}
                     href={url_for(page.prev.path)}
                   >
                     <i class="fas fa-chevron-left"></i>
-                    <span>{page.prev.title}</span>
+                    <span class="article-nav-title">{page.prev.title}</span>
                   </a>
                 </div>
               ) : <div class="article-nav-prev"></div>}
               {page.next ? (
                 <div class="article-nav-next">
                   <a
-                    class={`${
+                    class={`link-muted${
                       !page.next ? " is-hidden-mobile" : ""
-                    } link-muted`}
+                    }`}
                     href={url_for(page.next.path)}
                   >
-                    <span>{page.next.title}</span>
+                    <span class="article-nav-title">{page.next.title}</span>
                     <i class="fas fa-chevron-right"></i>
                   </a>
                 </div>
