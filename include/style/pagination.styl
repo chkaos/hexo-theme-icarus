@@ -6,6 +6,8 @@ $pagination-background-color ?= $button-background-color
 $post-navigation-fg ?= $grey
 
 .pagination
+    margin-top 1rem
+
     .pagination-link,
     .pagination-ellipsis,
     .pagination-previous,
@@ -25,9 +27,9 @@ $post-navigation-fg ?= $grey
     .pagination-link:not(.is-current):hover
         color $pagination-current-background-color
     // 上下页按钮 hover 样式
-    .pagination-previous:hover,.pagination-next:hover
+    .pagination-previous:hover, .pagination-next:hover
         a
-            color $pagination-current-background-color
+            color $pagination-current-background-color !important
 
 .post-navigation
     color: $post-navigation-fg
