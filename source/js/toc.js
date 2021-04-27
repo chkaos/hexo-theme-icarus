@@ -15,7 +15,7 @@ var calcAnchorLink = (heights, currHeight) => {
   return -1
 }
 
-let isPassingThrough = (currHeight, prevHeight, linkHeight) => {
+var isPassingThrough = (currHeight, prevHeight, linkHeight) => {
   return (currHeight + 1 - linkHeight) * (prevHeight + 1 - linkHeight) <= 0
 }
 
